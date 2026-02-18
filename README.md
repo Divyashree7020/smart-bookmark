@@ -1,36 +1,56 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Smart Bookmark App
 
-## Getting Started
+A full-stack bookmark manager built with:
 
-First, run the development server:
+- Next.js (App Router)
+- Supabase (Auth + Database + Realtime)
+- Google OAuth
+- Tailwind CSS
+- Vercel (Deployment)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Live Demo
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+https://smart-bookmark-beryl.vercel.app
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+##  GitHub Repository
 
-To learn more about Next.js, take a look at the following resources:
+https://github.com/Divyashree7020/smart-bookmark
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+--> Features
 
-## Deploy on Vercel
+- Google Authentication (Supabase Auth)
+- Row Level Security (RLS)
+- Add / Delete Bookmarks
+- Realtime updates across tabs
+- Search functionality
+- Protected dashboard per user
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Problems Faced & Solutions
+
+1. Realtime not updating in second tab
+Problem: Second tab required refresh to show new bookmarks.  
+Solution: Implemented Supabase Realtime subscription using `postgres_changes` filtered by `user_id`.
+
+
+2. TypeScript Build Error on Deployment
+Problem:`string | undefined` not assignable to `string | null`.  
+Solution: Used: setEmail(data.user.email ?? null).
+
+
+3. OAuth Redirect Issues After Deployment
+Problem: Google login failed on production.
+Solution: Added Vercel production URL in Supabase:
+Site URL
+Redirect URLs
+/auth/callback
+
+
+
+
+
