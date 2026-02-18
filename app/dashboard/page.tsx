@@ -59,7 +59,8 @@ export default function Dashboard() {
         return
       }
 
-      setEmail(data.user.email)
+      setEmail(data.user.email ?? null)
+
       await fetchBookmarks()
 
       // ✅ Realtime subscription (Tab 2 updates automatically)
